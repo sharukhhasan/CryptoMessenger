@@ -10,7 +10,7 @@ public class CreateResponse implements Serializable {
 
     public boolean creationSuccessful;
 
-    public CreateAccountResponse(boolean success){
+    public CreateResponse(boolean success){
         this.creationSuccessful = success;
     }
 }
