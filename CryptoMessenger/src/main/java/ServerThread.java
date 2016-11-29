@@ -1,3 +1,8 @@
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.Socket;
+
 /**
  * Created by sharukhhasan on 11/29/16.
  */
@@ -21,7 +26,7 @@ public class ServerThread implements Runnable {
                         if(request instanceof PacketCloseConnection){
                             break;
                         }
-                        out.writeObject(CCProtocol.handleInput(request));
+                        out.writeObject(CommunicationProtocol.handleInput(request));
                     }
                 }catch (java.io.EOFException e){}
             }
