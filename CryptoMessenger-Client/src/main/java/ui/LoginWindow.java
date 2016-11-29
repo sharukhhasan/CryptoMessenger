@@ -21,7 +21,7 @@ public class LoginWindow {
     private JFrame frmLoginCryptochat;
     private JTextField usernameField;
     private JPasswordField passwordField;
-    private static final String serverAddress = "localhost"; //Set the server address here
+    private static final String serverAddress = "http://cryptomessenger.crak0tcyjztl.us-east-1.rds.amazonaws.com"; //Set the server address here
 
     /**
      * Launch the application.

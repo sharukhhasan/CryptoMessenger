@@ -16,7 +16,7 @@ public class LoginProvider {
 
     public static void connectToDb(){
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost/im", "default", "");
+            connection = DriverManager.getConnection("http://cryptomessenger.crak0tcyjztl.us-east-1.rds.amazonaws.com", "sharukhhasan", "seniordesign");
             statement = connection.createStatement();
         } catch (SQLException e) {
             System.out.println("Connection to sql server failed!");

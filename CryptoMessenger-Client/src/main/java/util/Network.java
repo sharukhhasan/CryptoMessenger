@@ -18,7 +18,7 @@ public class Network {
 
     public static void connect(String server){
         try {
-            socket = new Socket(server, 1234);
+            socket = new Socket(server, 3306);
             out = new ObjectOutputStream(socket.getOutputStream());
             in = new ObjectInputStream(socket.getInputStream());
         } catch (UnknownHostException e) {

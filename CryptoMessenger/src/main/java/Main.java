@@ -11,7 +11,7 @@ public class Main {
         LoginProvider.connectToDb();
         ServerSocket serverSocket = null;
         try {
-            serverSocket = new ServerSocket(1234);
+            serverSocket = new ServerSocket(3306);
         } catch (IOException e) {
             System.out.println("Could not bind to port 1234");
             e.printStackTrace();
