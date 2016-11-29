@@ -1,24 +1,30 @@
+import packets.CreateAccount;
+import packets.CreateResponse;
+import packets.Login;
+import packets.LoginResponse;
+
 /**
- * Created by sharukhhasan on 11/29/16.
+ * Created by Sharukh Hasan on 11/29/16.
  */
 public class CommunicationProtocol {
 
     public static Object handleInput(Object object){
-        if(object instanceof PacketLogin){
-            if(LoginProvider.checkLogin((PacketLogin)object)){
-                return new PacketLoginResponse(true);
+        if(object instanceof Login){
+            if(LoginProvider.checkLogin((Login) object)){
+                return new LoginResponse(true);
             }
-            return new PacketLoginResponse(false);
-        }
-        else if(object instanceof PacketCreateAccount){
-            if(LoginProvider.checkUsername((PacketCreateAccount)object)){
+
+            return new LoginResponse(false);
+        } else if(object instanceof CreateAccount){
+            if(LoginProvider.checkUsername((CreateAccount) object)){
                 System.out.println("uname available");
-                if(LoginProvider.addUser((PacketCreateAccount)object)){
+                if(LoginProvider.addUser((CreateAccount) object)){
                     System.out.println("account made");
-                    return new PacketCreateAccountResponse(true);
+                    return new CreateResponse(true);
                 }
             }
-            return new PacketCreateAccountResponse(false);
+
+            return new CreateResponse(false);
         }
         return null;
     }

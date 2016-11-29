@@ -1,12 +1,15 @@
-/**
- * Created by sharukhhasan on 11/29/16.
- */
+import packets.CreateAccount;
+import packets.Login;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+/**
+ * Created by Sharukh Hasan on 11/29/16.
+ */
 public class LoginProvider {
     static Connection connection = null;
     static Statement statement = null;
@@ -21,14 +24,14 @@ public class LoginProvider {
         }
     }
 
-    public static boolean checkLogin(PacketLogin login){
+    public static boolean checkLogin(Login login){
         if(isValid(login.username)){
             ResultSet result;
             try {
-                result = statement.executeQuery("SELECT password FROM accounts WHERE username = '"+login.username+"';");
+                result = statement.executeQuery("SELECT password FROM accounts WHERE username = '" + login.username + "';");
                 result.first();
                 if(login.passwordHash.equals(result.getString(1))){
-                    System.out.println("User '"+login.username+"' logged in!");
+                    System.out.println("User '" + login.username + "' logged in!");
                     return true;
                 }
             } catch (SQLException e) {
@@ -38,11 +41,11 @@ public class LoginProvider {
         return false;
     }
 
-    public static boolean checkUsername(PacketCreateAccount login){
+    public static boolean checkUsername(CreateAccount login){
         if(isValid(login.username)){
             ResultSet result;
             try {
-                result = statement.executeQuery("SELECT * FROM accounts WHERE username = '"+login.username+"';");
+                result = statement.executeQuery("SELECT * FROM accounts WHERE username = '" + login.username + "';");
                 if(result.next() == false){
                     return true;
                 }
@@ -51,14 +54,14 @@ public class LoginProvider {
                 e.printStackTrace();
             }
         }
-        System.out.println("Account creation failed for username '"+login.username+"'");
+        System.out.println("Account creation failed for username '" + login.username + "'");
         return false;
     }
 
-    public static boolean addUser(PacketCreateAccount login){
+    public static boolean addUser(CreateAccount login){
         try {
-            statement.execute("INSERT INTO accounts(username, password) VALUES ('"+login.username+"','"+login.passwordHash+"');");
-            System.out.println("Created account for user "+login.username);
+            statement.execute("INSERT INTO accounts(username, password) VALUES ('" + login.username + "','" + login.passwordHash + "');");
+            System.out.println("Created account for user " + login.username);
             return true;
         } catch (SQLException e) {
             // TODO Auto-generated catch block

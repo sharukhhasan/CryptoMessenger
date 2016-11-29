@@ -3,7 +3,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 /**
- * Created by sharukhhasan on 11/29/16.
+ * Created by Sharukh Hasan on 11/29/16.
  */
 public class Main {
 
@@ -22,7 +22,7 @@ public class Main {
         while(true){
             try {
                 clientSocket = serverSocket.accept();
-                System.out.println("Connection from "+clientSocket.getInetAddress());
+                System.out.println("Connection from " + clientSocket.getInetAddress());
                 new ServerThread(clientSocket).run();
             } catch (IOException e) {
                 System.out.println("Failed to accept on port 1234");
