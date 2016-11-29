@@ -17,8 +17,7 @@ import java.awt.event.MouseEvent;
 /**
  * Created by Sharukh Hasan on 11/29/16.
  */
-public class LoginPane {
-
+public class LoginWindow {
     private JFrame frmLoginCryptochat;
     private JTextField usernameField;
     private JPasswordField passwordField;
@@ -31,7 +30,7 @@ public class LoginPane {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    LoginPane window = new LoginPane();
+                    LoginWindow window = new LoginWindow();
                     window.frmLoginCryptochat.setResizable(false);
                     window.frmLoginCryptochat.setVisible(true);
                 } catch (Exception e) {
@@ -44,7 +43,7 @@ public class LoginPane {
     /**
      * Create the application.
      */
-    public LoginPane() {
+    public LoginWindow() {
         initialize();
     }
 
